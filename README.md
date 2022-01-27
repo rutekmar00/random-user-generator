@@ -1,6 +1,6 @@
 # random-user-generator
 
-> Projekt został stworzony w celu rekrutacyjnym jako zadanie testowe. Pozwala on na pobranie danych z Random User Generator API (**randomuser.me/**).
+> Projekt został stworzony w celu rekrutacyjnym jako zadanie testowe. Pozwala on na pobranie danych z [Random User Generator API](https://randomuser.me/).
 
 ## Spis treści
 
