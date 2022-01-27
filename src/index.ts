@@ -18,6 +18,10 @@ tableObject.fillTable();
 button?.addEventListener("click", async function () {
   const dataDiv = document.getElementsByClassName("data")[0];
   dataDiv?.classList.add("isBlur");
+  const spanLoadingIcon = document.getElementsByClassName(
+    "material-icons-outlined md-90"
+  )[0];
+  spanLoadingIcon?.classList.add("loading");
   const dataObject = new Data(urlOneThousandMaleFrenchUsers);
   await dataObject.fetchData();
   dataObject.createSections();
@@ -28,4 +32,5 @@ button?.addEventListener("click", async function () {
   dataObject.prepareTableData();
   tableObject.updateTable(dataObject.getTableData());
   dataDiv?.classList.remove("isBlur");
+  spanLoadingIcon?.classList.remove("loading");
 });
