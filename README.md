@@ -28,19 +28,20 @@
 - npm - wersja 8.3.1
 
 1. Pobierz repozytorium z githuba.
-2. Zainstaluj wszystkie zależności.
+2. Aby uruchomić projekt bez pobierania zależności, wystarczy otworzyć w przeglądarce plik index.html w folderze dist.
+3. Zainstaluj wszystkie zależności.
 
 ```bash
   npm install
 ```
 
-3. Uruchom webpack-dev-server.
+4. Uruchom webpack-dev-server.
 
 ```bash
   npm run serve
 ```
 
-4. Opcjonalnie - zaktualizuj plik bundle.js w folderze dist.
+5. Opcjonalnie - zaktualizuj plik bundle.js w folderze dist.
 
 ```bash
   npm run build
