@@ -1,4 +1,5 @@
 import Data from "./Data";
+import Plot from "./Plot";
 
 const button = document.getElementById("fetch-data");
 const urlOneThousandMaleFrenchUsers: string =
@@ -7,5 +8,9 @@ const urlOneThousandMaleFrenchUsers: string =
 button?.addEventListener("click", async function () {
   const dataObject = new Data(urlOneThousandMaleFrenchUsers);
   await dataObject.fetchData();
-  console.log(dataObject.getData());
+  dataObject.createSections();
+  dataObject.prepareData();
+  const dataChart = <HTMLCanvasElement>document.getElementById("data-chart");
+  const chartObject = new Plot(dataChart, dataObject.getData());
+  chartObject.chartPlot();
 });
