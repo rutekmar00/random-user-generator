@@ -83,7 +83,6 @@ export default class Data {
     let lastKey = Object.keys(this.data).pop();
     if (lastKey) {
       let lastGroup = this.sections[lastKey];
-      console.log(lastGroup);
       lastGroup.sort(function (
         a: { dob: { age: number } },
         b: { dob: { age: number } }
