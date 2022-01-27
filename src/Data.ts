@@ -46,7 +46,6 @@ export default class Data {
   }
 
   prepareData() {
-    // let data: any = {};
     let data: { [key: string]: number } = {};
     for (const section in this.sections) {
       let sectionArray = this.sections[section.toString()];
