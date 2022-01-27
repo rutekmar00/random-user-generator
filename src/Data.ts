@@ -1,14 +1,26 @@
 export default class Data {
   url: string;
   result: { results: [] };
-  sections: { [key: string]: {}[] };
+  sections: {
+    [key: string]: {
+      dob: { age: number };
+      name: { first: string; last: string };
+      location: { city: string; country: string };
+    }[];
+  };
   data: {};
+  tableData: {
+    name: { first: string; last: string };
+    dob: { age: number };
+    location: { city: string; country: string };
+  }[];
 
   constructor(url: string) {
     this.url = url;
     this.result = { results: [] };
     this.sections = {};
     this.data = {};
+    this.tableData = [];
   }
 
   async fetchData() {
@@ -28,7 +40,20 @@ export default class Data {
   createSections() {
     let sections = this.sections;
     sections = this.result.results.reduce(
-      (sections: { [key: string]: {}[] }, item: { dob: { age: number } }) => {
+      (
+        sections: {
+          [key: string]: {
+            dob: { age: number };
+            name: { first: string; last: string };
+            location: { city: string; country: string };
+          }[];
+        },
+        item: {
+          dob: { age: number };
+          name: { first: string; last: string };
+          location: { city: string; country: string };
+        }
+      ) => {
         const divider = 9;
         let label = "";
         label = `${Math.floor(item.dob.age / 10) * 10}-${
@@ -52,5 +77,24 @@ export default class Data {
       data[`${section}`] = sectionArray.length;
     }
     this.data = Object.fromEntries(Object.entries(data).sort());
+  }
+
+  prepareTableData() {
+    let lastKey = Object.keys(this.data).pop();
+    if (lastKey) {
+      let lastGroup = this.sections[lastKey];
+      console.log(lastGroup);
+      lastGroup.sort(function (
+        a: { dob: { age: number } },
+        b: { dob: { age: number } }
+      ) {
+        return b.dob.age - a.dob.age;
+      });
+      this.tableData = lastGroup.slice(0, 10 - lastGroup.length);
+    }
+  }
+
+  getTableData() {
+    return this.tableData;
   }
 }
